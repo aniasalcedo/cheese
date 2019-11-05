@@ -18,10 +18,7 @@ import java.util.Map;
 @RequestMapping("cheese")
 public class CheeseController {
 
-//this is so we cant repeat the same NAME of the Cheese
-// (jesli uzyjemy tego samego name to zmieni sie tylko opis
-// ale nie bedziemy miec dwoch takich samych elementow)
-    static ArrayList<Cheese> cheeses = new ArrayList<>();
+
 
     // Request path: /cheese
     @RequestMapping(value = "")
