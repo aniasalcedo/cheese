@@ -1,50 +1,42 @@
-package org.launchcode.Models;
+package org.launchcode.models;
 
+import org.launchcode.Models.CheeseType;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Created by LaunchCode
+ */
+@Entity
 public class Cheese {
 
+    @Id
+    @GeneratedValue
+    private int id;
+
     @NotNull
-    @Size(min=3, max=15) //Name of the cheese is between 3-15 char
+    @Size(min=3, max=15)
     private String name;
 
     @NotNull
-    @Size(min=1, message="Description must not be empty")
+    @Size(min=1, message = "Description must not be empty")
     private String description;
 
     private CheeseType type;
 
-    private int cheeseId;
-    private static int nextId = 1;
-
-
     public Cheese(String name, String description) {
-        this(); // call the default constructor for the given class
         this.name = name;
         this.description = description;
     }
 
-    public Cheese() {
-        cheeseId = nextId;
-        nextId++;
-//        when next object is created it will be incremented by one (gets a different ID)
-    }
+    public Cheese() { }
 
-    public int getCheeseId() {
-        return cheeseId;
-    }
-
-    public void setCheeseId(int cheeseId) {
-        this.cheeseId = cheeseId;
-    }
-
-    public CheeseType getType() {
-        return type;
-    }
-
-    public void setType(CheeseType type) {
-        this.type = type;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -63,5 +55,11 @@ public class Cheese {
         this.description = description;
     }
 
+    public CheeseType getType() {
+        return type;
+    }
 
+    public void setType(CheeseType type) {
+        this.type = type;
+    }
 }
